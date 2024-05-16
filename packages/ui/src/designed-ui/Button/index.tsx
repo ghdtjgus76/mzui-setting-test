@@ -1,11 +1,19 @@
-import { css } from "@styled-system/css/css";
 import type { ReactNode } from "react";
+import { css } from "@styled-system/css/css";
 
 export interface ButtonProps {
   children: ReactNode;
+  onClick?: () => void;
+  size?: "xs" | "s" | "m" | "l" | "xl";
+  isLoading?: boolean;
 }
 
-const Button = ({ children }: ButtonProps) => {
+const Button = ({
+  children,
+  onClick,
+  size = "xs",
+  isLoading = false,
+}: ButtonProps) => {
   return (
     <button
       className={css({
@@ -16,6 +24,7 @@ const Button = ({ children }: ButtonProps) => {
         borderRadius: "md",
         _hover: { bg: "red.500" },
       })}
+      onClick={onClick}
     >
       {children}
     </button>
