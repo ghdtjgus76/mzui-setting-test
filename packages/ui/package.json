@@ -1,34 +1,11 @@
 {
-  "name": "ui",
+  "name": "mzui-test",
   "version": "0.0.0",
   "description": "",
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "dist",
-    "README.md",
-    "package.json"
-  ],
-  "module": "./dist/components/index.js",
   "type": "module",
-  "exports": {
-    "./styles.css": "./dist/styles.css",
-    "./Box": {
-      "types": "./dist/Box/index.d.ts",
-      "require": "./dist/Box.cjs",
-      "import": "./dist/Box.js"
-    },
-    "./Button": {
-      "types": "./dist/Button/index.d.ts",
-      "require": "./dist/Button.cjs",
-      "import": "./dist/Button.js"
-    }
-  },
   "keywords": [],
   "license": "ISC",
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
