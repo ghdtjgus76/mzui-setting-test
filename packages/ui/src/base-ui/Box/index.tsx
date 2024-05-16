@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
 
-export interface ButtonProps {
+export interface BoxProps {
   children: ReactNode;
 }
 
-const Box = ({ children }: ButtonProps) => {
-  return <button>{children}</button>;
+const Box = ({ children }: BoxProps) => {
+  return <div>{children}</div>;
 };
 
 export default Box;

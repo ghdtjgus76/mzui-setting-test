@@ -1,13 +1,13 @@
 import { css } from "@styled-system/css/css";
 import type { ReactNode } from "react";
 
-export interface ButtonProps {
+export interface BoxProps {
   children: ReactNode;
 }
 
-const Box = ({ children }: ButtonProps) => {
+const Box = ({ children }: BoxProps) => {
   return (
-    <button
+    <div
       className={css({
         bg: "blue.100",
         fontFamily: "Inter",
@@ -18,7 +18,7 @@ const Box = ({ children }: ButtonProps) => {
       })}
     >
       {children}
-    </button>
+    </div>
   );
 };
 
