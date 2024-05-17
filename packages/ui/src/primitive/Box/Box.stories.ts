@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Box from "@/primitive/Box";
 
 const meta = {
-  title: "Base-UI/Box",
+  title: "Primitive-UI/Box",
   component: Box,
   tags: ["autodocs"],
 } satisfies Meta<typeof Box>;
