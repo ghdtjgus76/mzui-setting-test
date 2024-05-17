@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Box from "@/base-ui/Box";
+
+import Box from "@/themed/Box";
 
 const meta = {
-  title: "Base-UI/Box",
+  title: "Designed-UI/Box",
   component: Box,
   tags: ["autodocs"],
 } satisfies Meta<typeof Box>;
