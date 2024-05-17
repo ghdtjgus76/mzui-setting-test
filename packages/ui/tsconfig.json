@@ -24,7 +24,7 @@
       "@styled-system/*": ["./styled-system/*"]
     }
   },
-  "include": ["src/primitive/**/*"],
+  "include": ["src/primitive/**/*", "src/themed/**/*"],
   "exclude": [
     "node_modules",
     "dist",

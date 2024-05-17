@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), dts()],
   build: {
     lib: {
-      entry: "src/primitive",
+      entry: ["src/primitive/Box", "src/primitive/Button"],
       name: "@warrrui-test/ui",
     },
     rollupOptions: {
