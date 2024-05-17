@@ -6,6 +6,10 @@
   "keywords": [],
   "license": "ISC",
   "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "plop:codegen": "plop --plopfile ../codegen/plopfile.js"
@@ -21,9 +25,16 @@
     "@storybook/test": "^7.6.3",
     "@storybook/testing-library": "^0.2.2",
     "@turbo/gen": "^1.12.4",
-    "eslint": "^8.57.0",
     "eslint-plugin-storybook": "^0.6.15",
     "plop": "^4.0.1",
-    "storybook": "^7.5.3"
+    "storybook": "^7.5.3",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
   }
 }
