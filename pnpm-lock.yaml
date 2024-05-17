@@ -97,6 +97,9 @@ importers:
       eslint-plugin-storybook:
         specifier: ^0.6.15
         version: 0.6.15(eslint@8.57.0)(typescript@5.3.3)
+      plop:
+        specifier: ^4.0.1
+        version: 4.0.1
       storybook:
         specifier: ^7.5.3
         version: 7.6.19

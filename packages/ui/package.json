@@ -7,7 +7,8 @@
   "license": "ISC",
   "scripts": {
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "plop:codegen": "plop --plopfile ../codegen/plopfile.js"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.5.3",
@@ -22,6 +23,7 @@
     "@turbo/gen": "^1.12.4",
     "eslint": "^8.57.0",
     "eslint-plugin-storybook": "^0.6.15",
+    "plop": "^4.0.1",
     "storybook": "^7.5.3"
   }
 }
