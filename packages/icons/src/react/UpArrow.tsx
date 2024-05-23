@@ -6,27 +6,27 @@ const UpArrow = () => (
     width="24"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clip-path="url(#clip0_36_3519)">
+    <g clipPath="url(#clip0_36_3519)">
       <path
         d="M19 12L5 12"
         stroke="#E4E4E5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.6"
       />
       <path
         d="M19 12L13 6"
         stroke="#E4E4E5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.6"
       />
       <path
         d="M19 12L13 18"
         stroke="#E4E4E5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.6"
       />
     </g>
     <defs>

@@ -17,7 +17,7 @@ const generateReactComponentFromSvg = async () => {
 
     const componentContent = `
       const ${componentName} = () => (
-        ${svgContent}
+        ${svgContent.replace(/-(\w)/g, (_, letter) => letter.toUpperCase())}
       );
 
       export default ${componentName};
