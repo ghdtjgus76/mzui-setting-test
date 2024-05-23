@@ -1,6 +1,6 @@
 {
   "name": "warrrui-test-icons",
-  "version": "0.0.1",
+  "version": "0.0.21",
   "description": "",
   "files": [
     "dist",
@@ -18,7 +18,7 @@
     }
   },
   "scripts": {
-    "build": "rm -rf dist && rollup -c --bundleConfigAsCjs && tsc --emitDeclarationOnly",
+    "build": "pnpm generate:icons && rm -rf dist && rollup -c --bundleConfigAsCjs && tsc --emitDeclarationOnly",
     "generate:icons": "tsx ../scripts/generate-react-component-from-svg"
   },
   "keywords": [],
@@ -35,7 +35,6 @@
     "babel-preset-react-app": "^10.0.1",
     "plop": "^4.0.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-svgo": "^2.0.0",
     "tsx": "^4.11.0"
   },
   "publishConfig": {
