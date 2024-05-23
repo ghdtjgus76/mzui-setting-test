@@ -18,7 +18,8 @@
     }
   },
   "scripts": {
-    "build": "rm -rf dist && rollup -c --bundleConfigAsCjs && tsc --emitDeclarationOnly"
+    "build": "rm -rf dist && rollup -c --bundleConfigAsCjs && tsc --emitDeclarationOnly",
+    "generate:icons": "tsx ../scripts/generate-react-component-from-svg"
   },
   "keywords": [],
   "author": "",
