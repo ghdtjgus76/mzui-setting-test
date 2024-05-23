@@ -6,13 +6,14 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import babel from "@rollup/plugin-babel";
 import svgr from "@svgr/rollup";
 import url from "@rollup/plugin-url";
+import svgo from "rollup-plugin-svgo";
 
 const extensions = [".ts", ".tsx", ".js", ".jsx"];
 
 process.env.BABEL_ENV = "production";
 
 const baseConfig = {
-  input: "./src/index.ts",
+  input: "./src/react/index.ts",
   output: [
     {
       file: "./dist/index.js",
@@ -39,6 +40,24 @@ const baseConfig = {
     }),
     url(),
     svgr(),
+    svgo({
+      multipass: false,
+      datauri: "base64",
+      js2svg: {
+        indent: 2,
+        pretty: true,
+      },
+      plugins: [
+        "preset-default",
+        "prefixIds",
+        {
+          name: "prefixIds",
+          params: {
+            prefix: "uwu",
+          },
+        },
+      ],
+    }),
   ],
 };
 
