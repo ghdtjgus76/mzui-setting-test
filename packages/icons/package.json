@@ -31,8 +31,9 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-url": "^8.0.2",
     "@svgr/rollup": "^8.1.0",
+    "babel-preset-react-app": "^10.0.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "babel-preset-react-app": "^10.0.1"
+    "tsx": "^4.10.5"
   },
   "publishConfig": {
     "access": "public"
