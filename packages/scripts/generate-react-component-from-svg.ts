@@ -38,6 +38,10 @@ const generateReactComponentFromSvg = async () => {
     await fs.writeFile(componentFilePath, formattedComponentContent);
   }
 
+  return components;
+};
+
+const generateEntryFile = async (components: string[]) => {
   const entryFilePath = "../icons/src/react/index.ts";
   const entryFileContent = components
     .map(
@@ -52,4 +56,7 @@ const generateReactComponentFromSvg = async () => {
   await fs.writeFile(entryFilePath, formattedEntryFileContent);
 };
 
-generateReactComponentFromSvg();
+(async () => {
+  const components = await generateReactComponentFromSvg();
+  generateEntryFile(components);
+})();
