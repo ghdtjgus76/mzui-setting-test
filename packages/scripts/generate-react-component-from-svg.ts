@@ -19,11 +19,23 @@ const generateReactComponentFromSvg = async () => {
     const svgContent = (await fs.readFile(svgFilePath)).toString();
 
     const componentContent = `
-      const ${componentName} = () => (
+      import type { SVGProps } from 'react';
+      import { Ref, forwardRef } from 'react';
+
+      const ${componentName} = (
+        {
+          size = 24,
+          ...props
+        }: SVGProps<SVGSVGElement> & {
+          size?: number | string,
+        },
+        ref: Ref<SVGSVGElement>
+      ) => (
         ${svgContent.replace(/-(\w)/g, (_, letter) => letter.toUpperCase())}
       );
 
-      export default ${componentName};
+      const ForwardRef = forwardRef(${componentName});
+      export default ForwardRef;
     `;
     const componentDir = "../icons/src/react";
     const componentFilePath = path.resolve(
@@ -32,7 +44,7 @@ const generateReactComponentFromSvg = async () => {
     );
 
     const formattedComponentContent = await prettier.format(componentContent, {
-      parser: "babel",
+      parser: "typescript",
     });
 
     await fs.writeFile(componentFilePath, formattedComponentContent);
@@ -50,7 +62,7 @@ const generateEntryFile = async (components: string[]) => {
     )
     .join("\n");
   const formattedEntryFileContent = await prettier.format(entryFileContent, {
-    parser: "babel",
+    parser: "typescript",
   });
 
   await fs.writeFile(entryFilePath, formattedEntryFileContent);

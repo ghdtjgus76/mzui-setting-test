@@ -1,4 +1,15 @@
-const UpArrow = () => (
+import type { SVGProps } from "react";
+import { Ref, forwardRef } from "react";
+
+const UpArrow = (
+  {
+    size = 24,
+    ...props
+  }: SVGProps<SVGSVGElement> & {
+    size?: number | string;
+  },
+  ref: Ref<SVGSVGElement>,
+) => (
   <svg
     fill="none"
     height="24"
@@ -37,4 +48,5 @@ const UpArrow = () => (
   </svg>
 );
 
-export default UpArrow;
+const ForwardRef = forwardRef(UpArrow);
+export default ForwardRef;
