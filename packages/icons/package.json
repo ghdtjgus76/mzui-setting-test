@@ -18,8 +18,7 @@
     }
   },
   "scripts": {
-    "build": "rm -rf dist && rollup -c --bundleConfigAsCjs && tsc --emitDeclarationOnly",
-    "generate:icons": "plop --plopfile ../codegen/plopfile.js"
+    "build": "rm -rf dist && rollup -c --bundleConfigAsCjs && tsc --emitDeclarationOnly"
   },
   "keywords": [],
   "author": "",
