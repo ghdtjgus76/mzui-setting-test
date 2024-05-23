@@ -25,14 +25,12 @@ export default async function (plop) {
     ],
   });
 
+  plop.setPartial("myIconPartial", `{{componentContent}}`);
+
   plop.setGenerator("Icon", {
     description: "Convert SVG to React component",
     prompts: [],
     actions: () => {
-      try {
-      } catch (e) {
-        console.log(e);
-      }
       const actions = [];
       const svgDir = "../icons/src/svg";
       const svgFiles = fs
