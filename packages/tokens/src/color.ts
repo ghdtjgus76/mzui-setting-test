@@ -14,7 +14,6 @@ export const red200 = "#EA4332";
 export const red300 = "#EA4333";
 export const red400 = "#EA4334";
 export const red500 = "#EA4335";
-
 export const white = "#FFFFFF";
 export const black = "#000000";
 

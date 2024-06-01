@@ -12,8 +12,7 @@ const generatePresetTokens = async () => {
     const fileContent = (await fs.readFile(filePath)).toString();
 
     if (tokenFile === "color.ts") {
-      generateColorScaleTokens();
-      generateColorSemanticTokens();
+      generateColorTokens(fileContent);
     } else if (tokenFile === "radius.ts") {
       generateRadiusTokens(fileContent);
     } else if (tokenFile === "space.ts") {
@@ -24,9 +23,62 @@ const generatePresetTokens = async () => {
   }
 };
 
-const generateColorScaleTokens = () => {};
+const generateColorTokens = async (fileContent: string) => {
+  const scaleTokens: Record<string, string> = {};
+  const semanticTokens: Record<string, string> = {};
 
-const generateColorSemanticTokens = () => {};
+  let currentCategory = "";
+
+  const lines = fileContent.split("\n");
+
+  const scalePattern = /export const (\w+) = (.*);/;
+  const semanticPattern = /export const (\w+) = ([\w#]+);/;
+
+  lines.forEach((line) => {
+    line = line.trim();
+
+    if (line.startsWith("//")) {
+      currentCategory = line.substring(2).trim().toLowerCase();
+    } else if (line.startsWith("export const")) {
+      let match;
+      if (currentCategory === "scale" && (match = scalePattern.exec(line))) {
+        const variableName = match[1] as string;
+
+        scaleTokens[variableName] = variableName;
+      } else if (
+        currentCategory === "semantic" &&
+        (match = semanticPattern.exec(line))
+      ) {
+        const variableName = match[1] as string;
+
+        semanticTokens[variableName] = variableName;
+      }
+    }
+  });
+
+  const tokenFileContent = [
+    'import { defineTokens, defineSemanticTokens } from "@pandacss/dev";',
+    'import { color } from "warrrui-test-tokens";',
+    "",
+    "export const colors = defineTokens.colors({",
+    ...Object.entries(scaleTokens).map(
+      ([key, value]) => `  ${key}: { value: color.${value} },`
+    ),
+    "});",
+    "",
+    "export const semanticColors = defineSemanticTokens({",
+    "colors: {",
+    ...Object.entries(semanticTokens).map(
+      ([key, value]) => `  ${key}: { value: color.${value} },`
+    ),
+    "}",
+    "});",
+  ].join("\n");
+
+  const presetFilePath = `${PRESET_DIR}/colors.ts`;
+
+  await fs.writeFile(presetFilePath, tokenFileContent);
+};
 
 const generateRadiusTokens = async (fileContent: string) => {
   const variableRegex = /export const (\w+) = "(.*?)";/g;
