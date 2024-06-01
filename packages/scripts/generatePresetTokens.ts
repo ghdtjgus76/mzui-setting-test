@@ -10,8 +10,6 @@ const generatePresetTokens = async () => {
   for (const tokenFile of tokenFiles) {
     const filePath = `${TOKEN_DIR}/${tokenFile}`;
     const fileContent = (await fs.readFile(filePath)).toString();
-    console.log("---------");
-    console.log(fileContent);
 
     if (tokenFile === "color.ts") {
       generateColorScaleTokens();
