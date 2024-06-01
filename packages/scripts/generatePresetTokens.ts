@@ -31,11 +31,11 @@ const generateColorScaleTokens = () => {};
 const generateColorSemanticTokens = () => {};
 
 const generateRadiusTokens = async (fileContent: string) => {
-  const objectRegex = /export const (\w+) = "(.*?)";/g;
+  const variableRegex = /export const (\w+) = "(.*?)";/g;
   const objects: Record<string, string> = {};
   let match;
 
-  while ((match = objectRegex.exec(fileContent)) !== null) {
+  while ((match = variableRegex.exec(fileContent)) !== null) {
     const objectName = match[1] as string;
     objects[objectName] = `radius.${objectName}`;
   }
