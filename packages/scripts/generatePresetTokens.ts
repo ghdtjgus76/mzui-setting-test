@@ -19,7 +19,7 @@ const generatePresetTokens = async () => {
     } else if (tokenFile === "radius.ts") {
       generateRadiusTokens(fileContent);
     } else if (tokenFile === "space.ts") {
-      generateSpacingTokens();
+      generateSpacingTokens(fileContent);
     } else {
       generateTextStyleTokens(fileContent);
     }
@@ -55,7 +55,30 @@ const generateRadiusTokens = async (fileContent: string) => {
   await fs.writeFile(presetFilePath, textStyleFileContent);
 };
 
-const generateSpacingTokens = () => {};
+const generateSpacingTokens = async (fileContent: string) => {
+  const variableRegex = /export const (\w+) = "(.*?)";/g;
+  const objects: Record<string, string> = {};
+  let match;
+
+  while ((match = variableRegex.exec(fileContent)) !== null) {
+    const objectName = match[1] as string;
+    objects[objectName] = `space.${objectName}`;
+  }
+
+  const textStyleFileContent = [
+    'import { defineTokens } from "@pandacss/dev";',
+    'import { space } from "warrrui-test-tokens";',
+    "",
+    "export const spacing = defineTokens.spacing({",
+    ...Object.keys(objects).map(
+      (key) => `  ${key}: { value: ${objects[key]} },`
+    ),
+    "});",
+  ].join("\n");
+  const presetFilePath = `${PRESET_DIR}/spacing.ts`;
+
+  await fs.writeFile(presetFilePath, textStyleFileContent);
+};
 
 const generateTextStyleTokens = async (fileContent: string) => {
   const objectRegex = /export const (\w+) = \{([\s\S]*?)\};/g;
