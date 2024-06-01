@@ -17,7 +17,7 @@ const generatePresetTokens = async () => {
       generateColorScaleTokens();
       generateColorSemanticTokens();
     } else if (tokenFile === "radius.ts") {
-      generateRadiusTokens();
+      generateRadiusTokens(fileContent);
     } else if (tokenFile === "space.ts") {
       generateSpacingTokens();
     } else {
@@ -30,7 +30,30 @@ const generateColorScaleTokens = () => {};
 
 const generateColorSemanticTokens = () => {};
 
-const generateRadiusTokens = () => {};
+const generateRadiusTokens = async (fileContent: string) => {
+  const objectRegex = /export const (\w+) = "(.*?)";/g;
+  const objects: Record<string, string> = {};
+  let match;
+
+  while ((match = objectRegex.exec(fileContent)) !== null) {
+    const objectName = match[1] as string;
+    objects[objectName] = `radius.${objectName}`;
+  }
+
+  const textStyleFileContent = [
+    'import { defineTokens } from "@pandacss/dev";',
+    'import { radius } from "warrrui-test-tokens";',
+    "",
+    "export const radii = defineTokens.radii({",
+    ...Object.keys(objects).map(
+      (key) => `  ${key}: { value: ${objects[key]} },`
+    ),
+    "});",
+  ].join("\n");
+  const presetFilePath = `${PRESET_DIR}/radius.ts`;
+
+  await fs.writeFile(presetFilePath, textStyleFileContent);
+};
 
 const generateSpacingTokens = () => {};
 
