@@ -1,5 +1,4 @@
 import { promises as fs } from "fs";
-import { typography } from "warrrui-test-tokens";
 
 const PRESET_DIR = "../presets/src";
 
