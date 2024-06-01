@@ -23,7 +23,7 @@ const baseConfig = {
       format: "cjs",
     },
   ],
-  external: ["react/jsx-runtime"],
+  external: ["react/jsx-runtime", "react", "react-dom"],
   plugins: [
     peerDepsExternal(),
     resolve({ extensions }),
