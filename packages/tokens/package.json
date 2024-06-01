@@ -1,0 +1,28 @@
+{
+  "name": "@warrrui-test/tokens",
+  "version": "0.0.2",
+  "description": "",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && rollup -c --bundleConfigAsCjs && tsc --emitDeclarationOnly"
+  },
+  "keywords": [],
+  "license": "ISC"
+}
