@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "pnpm generate:icons && rm -rf dist && rollup -c --bundleConfigAsCjs && tsc --emitDeclarationOnly",
-    "generate:icons": "tsx ../scripts/generate-react-component-from-svg"
+    "generate:icons": "tsx ../scripts/generateReactComponentFromSvg"
   },
   "keywords": [],
   "author": "",
